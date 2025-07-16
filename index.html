@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TIFFY GOLD MINING Facility</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      background: black;
+    }
+
+    .message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #00ffe7;
+      font-size: 2rem;
+      text-align: center;
+      text-shadow: 0 0 12px #00ffe7;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 1;
+    }
+
+    .visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <video id="bgVideo" autoplay muted playsinline>
+    <source src="./mining1.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <div id="text1" class="message">YOU have just UNLOCKED the<br>TIFFY GOLD MINING Facility at NO COST to You.</div>
+  <div id="text2" class="message">Connect your Wallet. Activate Your Personal Miner!<br>Speed-Up Mining With Blue Keys!<br>Withdraw Threshold: 1 TIFFY.</div>
+
+  <script>
+    const video = document.getElementById('bgVideo');
+    const text1 = document.getElementById('text1');
+    const text2 = document.getElementById('text2');
+
+    // Show text1 after 2s
+    setTimeout(() => {
+      text1.classList.add('visible');
+    }, 2000);
+
+    // After 5s: switch to mining2.mp4 and hide text1
+    setTimeout(() => {
+      text1.classList.remove('visible');
+
+      // Replace video source correctly
+      const source = document.createElement('source');
+      source.src = "./mining2.mp4";
+      source.type = "video/mp4";
+
+      video.innerHTML = ''; // clear old source
+      video.appendChild(source);
+      video.load();
+      video.play();
+    }, 5000);
+
+    // Show text2 at 6s
+    setTimeout(() => {
+      text2.classList.add('visible');
+    }, 6000);
+
+    // Redirect at 11s
+    setTimeout(() => {
+      window.location.href = "https://tiffyai.github.io";
+    }, 11000);
+  </script>
+
+</body>
+<<<<<<< HEAD
+</html>
+=======
+</html>
+>>>>>>> 9bb6261a546627fe7e498abadd730d505edf535e
