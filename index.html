@@ -18,11 +18,10 @@
     video {
       position: fixed;
       top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       z-index: -1;
-      background: black;
     }
 
     .message {
@@ -30,56 +29,67 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #00ffe7;
       font-size: 2rem;
+      color: #00ffe7;
       text-align: center;
-      text-shadow: 0 0 12px #00ffe7;
       opacity: 0;
       transition: opacity 1s ease-in-out;
-      z-index: 1;
+      text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 40px #00ccff;
+      animation: pulse 3s infinite ease-in-out;
     }
 
     .visible {
       opacity: 1;
+    }
+
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.05); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    #text2 {
+      font-size: 1.3rem;
+      color: #ffffff;
+      text-shadow: 0 0 10px #ffffff88, 0 0 20px #4af0f8;
     }
   </style>
 </head>
 <body>
 
   <video id="bgVideo" autoplay muted playsinline>
-    <source src="./mining1.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
+    <source src="https://tiffyai.github.io/Miner/mining1.mp4" type="video/mp4" />
   </video>
 
-  <div id="text1" class="message">YOU have just UNLOCKED the<br>TIFFY GOLD MINING Facility at NO COST to You.</div>
-  <div id="text2" class="message">Connect your Wallet. Activate Your Personal Miner!<br>Speed-Up Mining With Blue Keys!<br>Withdraw Threshold: 1 TIFFY.</div>
+  <div id="text1" class="message">
+    YOU have just UNLOCKED the<br>
+    TIFFY GOLD MINING Facility at <b>NO COST</b> to You.
+  </div>
+  <div id="text2" class="message">
+    Connect your Wallet & Activate Your Personal Miner!<br>
+    Speed-Up Mining With <b>Blue Keys</b>!<br>
+    Withdraw Threshold: <b>1 TIFFY</b>
+  </div>
 
   <script>
     const video = document.getElementById('bgVideo');
     const text1 = document.getElementById('text1');
     const text2 = document.getElementById('text2');
 
-    // Show text1 after 2s
+    // Show first message at 2s
     setTimeout(() => {
       text1.classList.add('visible');
     }, 2000);
 
-    // After 5s: switch to mining2.mp4 and hide text1
+    // Switch video + hide text1 at 5s
     setTimeout(() => {
       text1.classList.remove('visible');
-
-      // Replace video source correctly
-      const source = document.createElement('source');
-      source.src = "./mining2.mp4";
-      source.type = "video/mp4";
-
-      video.innerHTML = ''; // clear old source
-      video.appendChild(source);
+      video.src = "https://tiffyai.github.io/Miner/mining2.mp4";
       video.load();
       video.play();
     }, 5000);
 
-    // Show text2 at 6s
+    // Show second message at 6s
     setTimeout(() => {
       text2.classList.add('visible');
     }, 6000);
@@ -91,8 +101,4 @@
   </script>
 
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 9bb6261a546627fe7e498abadd730d505edf535e
